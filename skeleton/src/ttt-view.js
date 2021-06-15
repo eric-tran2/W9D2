@@ -1,7 +1,12 @@
+const Board = require("../ttt_node/board");
+
 class View {
   constructor(game, el) {}
 
-  setupBoard() {}
+  setupBoard() {
+    const ul = Document.createElement('ul')
+    const newBoard = new Board();
+  }
   
   bindEvents() {}
 
@@ -10,5 +15,6 @@ class View {
   makeMove(square) {}
 
 }
+
 
 module.exports = View;
