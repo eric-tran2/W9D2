@@ -15,7 +15,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const View = __webpack_require__(/*! ./ttt-view.js */ \"./src/ttt-view.js\");\nconst Game = __webpack_require__(/*! ../ttt_node/game.js */ \"./ttt_node/game.js\");\n\n\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  const containerEle = Document.querySelector('.ttt')\n});\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const View = __webpack_require__(/*! ./ttt-view.js */ \"./src/ttt-view.js\");\nconst Game = __webpack_require__(/*! ../ttt_node/game.js */ \"./ttt_node/game.js\");\n\n\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  const containerEle = document.querySelector('.ttt');\n  const game = new Game();\n  const view = new View(game, containerEle);\n});\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -25,7 +25,7 @@ eval("const View = __webpack_require__(/*! ./ttt-view.js */ \"./src/ttt-view.js\
   \*************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const Board = __webpack_require__(/*! ../ttt_node/board */ \"./ttt_node/board.js\");\n\nclass View {\n  constructor(game, el) {}\n\n  setupBoard() {\n    const ul = Document.createElement('ul')\n    const newBoard = new Board();\n  }\n  \n  bindEvents() {}\n\n  handleClick(e) {}\n\n  makeMove(square) {}\n\n}\n\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
+eval("const Board = __webpack_require__(/*! ../ttt_node/board */ \"./ttt_node/board.js\");\n\nclass View {\n  constructor(game, el) {\n    this.game = game;\n    this.el = el;\n    this.setupBoard();\n  }\n\n  setupBoard() {\n    const ul = document.createElement('ul');\n    ul.setAttribute(\"class\", \"li-container\");\n    this.el.appendChild(ul);\n\n    const lis = [1, 2, 3, 4, 5, 6, 7, 8, 9];\n\n    lis.forEach(pos => {\n      const li = document.createElement(\"li\");\n      li.setAttribute(\"data-id\", pos);\n      li.setAttribute(\"data-show\", true);\n      ul.appendChild(li);\n    })\n  }\n  \n  bindEvents() {\n    this.el.addEventListener(\"click\", this.handleClick);\n  }\n\n  handleClick(e) {\n    ev = e.target;\n  }\n\n  makeMove(square) {\n    const e = JSON.parse(t.dataset.pos);\n    const player = this.game.currentPlayer;\n    this.game.playMove(e);\n    square.classList.add(player);\n  }\n\n}\nul = document.querySelector(\".li-container\");\n\nul.addEventListener(\"click\", e => {\n  if (e.target.tagName === 'LI') {\n    handleClick(e);\n  }\n})\nmodule.exports = View;\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
 
 /***/ }),
 

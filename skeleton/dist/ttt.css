@@ -1,0 +1,27 @@
+ul {
+  display: flex;
+  height: 610px;
+  width: 630px;
+  flex-wrap: wrap;
+  list-style: none;
+  border: black;
+}
+
+li {
+  width: 200px;
+  height: 200px;
+  /* margin: 1px; */
+  background-color: cornflowerblue;
+  /* border: aliceblue; */
+  border-style: solid;
+  border-color: black;
+}
+
+li:hover{
+  background-color: grey;
+}
+
+.x, .o{
+  background: white;
+}
+
